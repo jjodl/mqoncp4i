@@ -1,30 +1,57 @@
 #! /bin/bash
+#
+# This script will cleanup the UniCluster lab.
+#
+ERRORMSG1="Error invalid arg:  \n\n
+Usage: <script> -i 01 -n melch1 \n
+    -i, Student number \n
+    -n, Student Namespace"
 
+ERRORMSG2="Missing args:  \n\n
+Usage: <script> -i 01 -n melch1 \n
+    -i, Student number \n
+    -n, Student Namespace"
+
+   while getopts ':i:n:' flag;
+     do
+       case "${flag}" in
+         i) student=${OPTARG};;
+         n) namespace=${OPTARG};;
+         *) echo -e ${ERRORMSG1}
+		exit 1;;
+       esac
+   done
+if [ $OPTIND -ne 5 ]; then
+   echo -e ${ERRORMSG2} 
+   exit 1
+fi
 #mq00 reserved for instructor
-export TARGET_NAMESPACE=cp4i-mq
-export QMpre=mq00
-export QMnamea=mq00a
-export CONNAMEa=mq00a-ibm-mq
-export SERVICEa=mq00a-ibm-mq
-export CHANNELa=mq00chla
-export TOCLUSa=TO_UNICLUS_mq00a
-export QMnameb=mq00b
-export CONNAMEb=mq00b-ibm-mq
-export SERVICEb=mq00b-ibm-mq
-export CHANNELb=mq00chlb
-export TOCLUSb=TO_UNICLUS_mq00b
-export QMnamec=mq00c
-export CONNAMEc=mq00c-ibm-mq
-export SERVICEc=mq00c-ibm-mq
-export CHANNELc=mq00chlc
-export TOCLUSc=TO_UNICLUS_mq00c
-export QMnamed=mq00d
-export CONNAMEd=mq00d-ibm-mq
-export SERVICEd=mq00d-ibm-mq
-export CHANNELd=mq00chld
-export TOCLUSd=TO_UNICLUS_mq00d
-export UNICLUS=UNICLUS00
-
+#
+export TARGET_NAMESPACE=$namespace
+export QMpre="mq"$student 
+export QMnamea="mq"$student"a"
+export CONNAMEa="mq"$student"a-ibm-mq"
+export SERVICEa="mq"$student"a-ibm-mq"
+export CHANNELa="mq"$student"chla"
+export TOCLUSa="TO_UNICLUS_mq"$student"a"
+export QMnameb="mq"$student"b"
+export CONNAMEb="mq"$student"b-ibm-mq"
+export SERVICEb="mq"$student"b-ibm-mq"
+export CHANNELb="mq"$student"chlb"
+export TOCLUSb="TO_UNICLUS_mq"$student"b"
+export QMnamec="mq"$student"c"
+export CONNAMEc="mq"$student"c-ibm-mq"
+export SERVICEc="mq"$student"c-ibm-mq"
+export CHANNELc="mq"$student"chlc"
+export TOCLUSc="TO_UNICLUS_mq"$student"c"
+export UNICLUS=UNICLUS"$student"
+export QMnamed="mq"$student"d"
+export CONNAMEd="mq"$student"d-ibm-mq"
+export SERVICEd="mq"$student"d-ibm-mq"
+export CHANNELd="mq"$student"chld"
+export TOCLUSd="TO_UNICLUS_mq"$student"d"
+export UNICLUS=UNICLUS"$student"
+#
 oc delete secret $QMpre-uniform-cluster-cert -n $TARGET_NAMESPACE
 oc delete queuemanager $QMnamea -n $TARGET_NAMESPACE
 oc delete route mq-traffic-mq-$QMnamea-ibm-mq-qm -n $TARGET_NAMESPACE
@@ -55,3 +82,6 @@ oc delete pvc data-$QMnamed-ibm-mq-0 -n $TARGET_NAMESPACE
 oc delete pvc $QMnamed-ibm-mq-persisted-data -n $TARGET_NAMESPACE
 oc delete pvc $QMnamed-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
 rm unicluster.yaml
+rm uniaddqmgr.yaml
+rm uni-addqmgr.sh
+rm uni-install.sh

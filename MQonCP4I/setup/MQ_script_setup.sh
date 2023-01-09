@@ -1,6 +1,5 @@
 #! /bin/bash
 #
-#Use storage class ibmc-file-gold-gid when running on ROKS clusters
 #Use storage class ocs-storagecluster-ceph-rbd when running on CoC PoT clusters
 #mq00 reserved for instructor
 #
@@ -32,18 +31,12 @@ fi
 #
 # Set variables
 #
-export TARGET_NAMESPACE=$namespace
-export QMpre="mq"$student
-export QMnamed="mq"$student"d"
-export CONNAMEd="mq"$student"d-ibm-mq"
-export SERVICEd="mq"$student"d-ibm-mq"
-export CHANNELd="mq"$student"chld"
-export TOCLUSd="TO_UNICLUS_mq"$student"d"
-export UNICLUS=UNICLUS"$student"
-export SC=ocs-storagecluster-ceph-rbd
-#export SC=ibmc-file-gold-gid
-export VERSION=9.3.0.0-r2
+unicluster/uni-install-create.sh $namespace $student
+unicluster/uni-addqmgr-create.sh $namespace $student
+streamq/strm-create.sh $namespace $student
+nativeha/nativeha-create.sh $namespace $student
 
-( echo "cat <<EOF" ; cat uniaddqmgr.yaml_template ; echo EOF ) | sh > uniaddqmgr.yaml
 
-oc apply -f uniaddqmgr.yaml  -n $TARGET_NAMESPACE
+
+
+
