@@ -25,7 +25,7 @@ export TOCLUSc="TO_UNICLUS_mq"$2"c"
 export UNICLUS=UNICLUS"$2"
 export SC=ocs-storagecluster-ceph-rbd
 #export SC=ibmc-file-gold-gid
-export VERSION=9.3.0.0-r2
+export VERSION=9.3.0.0-r1
 export UNICLUSTER_DIR="../unicluster/deploy/"
 ( echo 'cat <<EOF' ; cat unicluster/uni-install.sh_template ; echo EOF ) | sh > $UNICLUSTER_DIR"uni-install.sh" 
 ##( echo 'cat <<EOF' ; cat uni-install.sh_template ; echo EOF ) | sh > unicluster/deploy/uni-install.sh 
