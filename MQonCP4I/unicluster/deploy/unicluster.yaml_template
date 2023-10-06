@@ -261,7 +261,7 @@ spec:
   version: $VERSION
   license:
     accept: true
-    license: L-RJON-CJR2RX
+    license: L-YBXJ-ADJNSM
     use: "NonProduction"
   pki:
     keys:
