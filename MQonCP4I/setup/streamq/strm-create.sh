@@ -13,7 +13,7 @@ export CHLCAPS="mq"$2"STRMCHL"
 export CHANNEL="mq"$2"strmchl"
 export SC=ocs-storagecluster-ceph-rbd
 #export SC=ibmc-file-gold-gid
-export VERSION=9.3.2.0-r2
+export VERSION=9.3.4.0-r1
 export STREAMQ_DIR="../streamq/deploy/"
 
 ( echo 'cat <<EOF' ; cat streamq/strm-install.sh_template ; echo EOF ) | sh > $STREAMQ_DIR"strm-install.sh"
