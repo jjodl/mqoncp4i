@@ -24,7 +24,7 @@ export TOCLUSd="TO_UNICLUS_mq"$2"d"
 export UNICLUS=UNICLUS"$2"
 export SC=ocs-storagecluster-ceph-rbd
 #export SC=ibmc-file-gold-gid
-export VERSION=9.3.3.0-r1
+export VERSION=9.3.5.0-r1
 export UNICLUSTER_DIR="../unicluster/deploy/"
 
 ( echo 'cat <<EOF' ; cat unicluster/uni-addqmgr.sh_template ; echo EOF ) | sh > $UNICLUSTER_DIR"uni-addqmgr.sh"  

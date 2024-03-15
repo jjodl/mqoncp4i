@@ -38,7 +38,7 @@ spec:
   version: $VERSION
   license:
     accept: true
-    license: L-RJON-CJR2RX
+    license: L-VTPK-22YZPK
     use: "NonProduction"
   pki:
     keys:
