@@ -29,7 +29,13 @@ fi
 export TARGET_NAMESPACE=$namespace
 export QMname="mq"$student"ha"
 
-oc delete queuemanager $QMname -n $TARGET_NAMESPACE
+#mq99 reserved for instructor
+export TARGET_NAMESPACE=$namespace
+export QMname="mq"$student"ha"
+export QMInstance=$TARGET_NAMESPACE"-qm-ha"
+###oc delete queuemanagers.mq.ibm.com student1-qm-ha -n student1
+
+oc delete queuemanagers.mq.ibm.com $QMInstance -n $TARGET_NAMESPACE
 oc delete secret nativehacert -n $TARGET_NAMESPACE
 oc delete configmap nativehamqsc -n $TARGET_NAMESPACE
 oc delete pvc data-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
