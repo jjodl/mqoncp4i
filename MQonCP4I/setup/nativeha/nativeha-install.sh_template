@@ -4,6 +4,7 @@
 #Use storage class managed-nfs-storage when running on CoC PoT clusters
 #mq00 reserved for instructor
 export TARGET_NAMESPACE=$TARGET_NAMESPACE
+export QMInstance=$QMInstance
 export QMpre=$QMpre
 export QMname=$QMname
 export ROUTE=$ROUTE
