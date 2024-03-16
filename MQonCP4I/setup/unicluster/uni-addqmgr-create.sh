@@ -15,7 +15,7 @@ export TOCLUSb="TO_UNICLUS_mq"$2"b"
 export CONNAMEc="mq"$2"c-ibm-mq"
 export TOCLUSc="TO_UNICLUS_mq"$2"c"
 
-
+export QMInstanced=$TARGET_NAMESPACE"-mq"$2"d"
 export QMnamed="mq"$2"d"
 export CONNAMEd="mq"$2"d-ibm-mq"
 export SERVICEd="mq"$2"d-ibm-mq"

@@ -5,16 +5,19 @@
 #mq00 reserved for instructor
 export TARGET_NAMESPACE=$TARGET_NAMESPACE
 export QMpre=$QMpre
+export QMInstancea=$QMInstancea
 export QMnamea=$QMnamea
 export CONNAMEa=$CONNAMEa
 export SERVICEa=$SERVICEa
 export CHANNELa=$CHANNELa
 export TOCLUSa=$TOCLUSa
+export QMInstanceb=$QMInstanceb
 export QMnameb=$QMnameb
 export CONNAMEb=$CONNAMEb
 export SERVICEb=$SERVICEb
 export CHANNELb=$CHANNELb
 export TOCLUSb=$TOCLUSb
+export QMInstancec=$QMInstancec
 export QMnamec=$QMnamec
 export CONNAMEc=$CONNAMEc
 export SERVICEc=$SERVICEc

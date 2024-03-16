@@ -24,7 +24,7 @@ type: Opaque
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: $QMname
+  name: $QMInstance
 spec:
   version: $VERSION
   license:
@@ -47,6 +47,7 @@ spec:
       authorization:
         provider: integration-keycloak
   queueManager:
+    name: $QMname
     type: ephemeral
     resources:
       limits:

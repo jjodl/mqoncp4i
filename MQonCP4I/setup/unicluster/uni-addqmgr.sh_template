@@ -13,7 +13,7 @@ export CONNAMEb=$CONNAMEb
 export TOCLUSb=$TOCLUSb
 export CONNAMEc=$CONNAMEc
 export TOCLUSc=$TOCLUSc
-
+export QMInstanced=$QMInstanced
 export QMnamed=$QMnamed
 export CONNAMEd=$CONNAMEd
 export SERVICEd=$SERVICEd

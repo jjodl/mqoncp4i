@@ -5,6 +5,7 @@
 #mq00 reserved for instructor
 export TARGET_NAMESPACE=$TARGET_NAMESPACE
 export QMpre=$QMpre
+export QMInstance=$QMInstance
 export QMname=$QMname
 export ROUTE=$ROUTE
 export CHLCAPS=$CHLCAPS

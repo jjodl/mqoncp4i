@@ -7,16 +7,19 @@
 #
 export TARGET_NAMESPACE=$1
 export QMpre="mq"$2
+export QMInstancea=$TARGET_NAMESPACE"-mq"$2"a"
 export QMnamea="mq"$2"a"
 export CONNAMEa="mq"$2"a-ibm-mq"
 export SERVICEa="mq"$2"a-ibm-mq"
 export CHANNELa="mq"$2"chla"
 export TOCLUSa="TO_UNICLUS_mq"$2"a"
+export QMInstanceb=$TARGET_NAMESPACE"-mq"$2"b"
 export QMnameb="mq"$2"b"
 export CONNAMEb="mq"$2"b-ibm-mq"
 export SERVICEb="mq"$2"b-ibm-mq"
 export CHANNELb="mq"$2"chlb"
 export TOCLUSb="TO_UNICLUS_mq"$2"b"
+export QMInstancec=$TARGET_NAMESPACE"-mq"$2"c"
 export QMnamec="mq"$2"c"
 export CONNAMEc="mq"$2"c-ibm-mq"
 export SERVICEc="mq"$2"c-ibm-mq"

@@ -7,6 +7,7 @@
 #
 export TARGET_NAMESPACE=$1
 export QMpre="mq"$2
+export QMInstance=$TARGET_NAMESPACE"-qm-strm"
 export QMname="mq"$2"strm"
 export ROUTE="mq"$2"strmchl.chl.mq.ibm.com"
 export CHLCAPS="mq"$2"STRMCHL"

@@ -33,7 +33,7 @@ data:
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: $QMnamed
+  name: $QMInstance
 spec:
   version: $VERSION
   license:
@@ -53,6 +53,7 @@ spec:
   securityContext:
     supplementalGroups: [99]
   queueManager:
+    name: $QMnamed
     availability:
       type: SingleInstance
     storage:
