@@ -47,12 +47,12 @@ data:
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: $QMnamea
+  name: $QMInstancea
 spec:
   version: $VERSION
   license:
     accept: true
-    license: L-RJON-CJR2RX
+    license: L-VTPK-22YZPK
     use: "NonProduction"
   pki:
     keys:
@@ -67,6 +67,7 @@ spec:
   securityContext:
     supplementalGroups: [99]
   queueManager:
+    name: $QMname
     availability:
       type: SingleInstance
     storage:
@@ -154,12 +155,12 @@ data:
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: $QMnameb
+  name: $QMInstanceb
 spec:
   version: $VERSION
   license:
     accept: true
-    license: L-RJON-CJR2RX
+    license: L-VTPK-22YZPK
     use: "NonProduction"
   pki:
     keys:
@@ -174,6 +175,7 @@ spec:
   securityContext:
     supplementalGroups: [99]
   queueManager:
+    name: $QMnameb
     availability:
       type: SingleInstance
     storage:
@@ -256,7 +258,7 @@ data:
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: $QMnamec
+  name: $QMInstancec
 spec:
   version: $VERSION
   license:
@@ -276,6 +278,7 @@ spec:
   securityContext:
     supplementalGroups: [99]
   queueManager:
+    name: $QMnamec
     availability:
       type: SingleInstance
     storage:
