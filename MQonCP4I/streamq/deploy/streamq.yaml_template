@@ -78,7 +78,7 @@ spec:
   host: $CHANNEL.chl.mq.ibm.com
   to:
     kind: Service
-    name: $QMname-ibm-mq
+    name: $QMInstance-ibm-mq
   port:
     targetPort: 1414
   tls:

@@ -75,13 +75,13 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: mq-traffic-mq-$QMname-ibm-mq-qm
+  name: $TARGET_NAMESPACE-mq-traffic-mq-$QMname-ibm-mq-qm
   namespace: $TARGET_NAMESPACE
 spec:
   host: $CHANNEL.chl.mq.ibm.com
   to:
     kind: Service
-    name: $QMname-ibm-mq
+    name: $QMInstance-ibm-mq
   port:
     targetPort: 1414
   tls:

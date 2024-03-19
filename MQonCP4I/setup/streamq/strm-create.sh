@@ -7,10 +7,10 @@
 #
 export TARGET_NAMESPACE=$1
 export QMpre="mq"$2
-export QMInstance=$TARGET_NAMESPACE"-qm-strm"
+export QMInstance=$TARGET_NAMESPACE"-"$QMpre"strm"
 export QMname="mq"$2"strm"
 export ROUTE="mq"$2"strmchl.chl.mq.ibm.com"
-export CHLCAPS="mq"$2"STRMCHL"
+export CHLCAPS="MQ"$2"STRMCHL"
 export CHANNEL="mq"$2"strmchl"
 export SC=ocs-storagecluster-ceph-rbd
 #export SC=ibmc-file-gold-gid

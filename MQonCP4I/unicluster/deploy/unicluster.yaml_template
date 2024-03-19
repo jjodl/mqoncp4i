@@ -67,7 +67,7 @@ spec:
   securityContext:
     supplementalGroups: [99]
   queueManager:
-    name: $QMname
+    name: $QMnamea
     availability:
       type: SingleInstance
     storage:
@@ -103,13 +103,13 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: mq-traffic-mq-$QMnamea-ibm-mq-qm
+  name: QMInstancea-mq-traffic-mq-$QMnamea-ibm-mq-qm
   namespace: $TARGET_NAMESPACE
 spec:
   host: $CHANNELa.chl.mq.ibm.com
   to:
     kind: Service
-    name: $SERVICEa
+    name: QMInstancea-$SERVICEa
   port:
     targetPort: 1414
   tls:
@@ -211,13 +211,13 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: mq-traffic-mq-$QMnameb-ibm-mq-qm
+  name: QMInstanceb-mq-traffic-mq-$QMnameb-ibm-mq-qm
   namespace: $TARGET_NAMESPACE
 spec:
   host: $CHANNELb.chl.mq.ibm.com
   to:
     kind: Service
-    name: $SERVICEb
+    name: QMInstanceb-$SERVICEb
   port:
     targetPort: 1414
   tls:
@@ -314,13 +314,13 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: mq-traffic-mq-$QMnamec-ibm-mq-qm
+  name: QMInstancec-mq-traffic-mq-$QMnamec-ibm-mq-qm
   namespace: $TARGET_NAMESPACE
 spec:
   host: $CHANNELc.chl.mq.ibm.com
   to:
     kind: Service
-    name: $SERVICEc
+    name: QMInstancec-$SERVICEc
   port:
     targetPort: 1414
   tls:
