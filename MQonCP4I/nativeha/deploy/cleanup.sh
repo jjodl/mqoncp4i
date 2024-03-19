@@ -43,6 +43,6 @@ oc delete pvc data-$QMname-ibm-mq-1 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMname-ibm-mq-2 -n $TARGET_NAMESPACE
 oc delete route mq-traffic-mq-$QMname-ibm-mq-qm -n $TARGET_NAMESPACE
 
-rm nativeha.yaml
+##rm nativeha.yaml
 rm ha-install.sh
 

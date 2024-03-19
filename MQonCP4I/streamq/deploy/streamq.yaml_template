@@ -72,7 +72,7 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: mq-traffic-mq-$QMname-ibm-mq-qm
+  name: $TARGET_NAMESPACE-mq-traffic-mq-$QMname-ibm-mq-qm
   namespace: $TARGET_NAMESPACE
 spec:
   host: $CHANNEL.chl.mq.ibm.com

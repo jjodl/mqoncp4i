@@ -1,14 +1,14 @@
 #! /bin/bash
 #
-# This script will cleanup the UniCluster lab.
+# This script will cleanup the StreamQ lab.
 #
 ERRORMSG1="Error invalid arg:  \n\n
-Usage: <script> -i 01 -n melch1 \n
+Usage: <script> -i 01 -n student1 \n
     -i, Student number \n
     -n, Student Namespace"
 
 ERRORMSG2="Missing args:  \n\n
-Usage: <script> -i 01 -n melch1 \n
+Usage: <script> -i 01 -n student1 \n
     -i, Student number \n
     -n, Student Namespace"
 
@@ -27,13 +27,13 @@ if [ $OPTIND -ne 5 ]; then
 fi
 #mq99 reserved for instructor
 export TARGET_NAMESPACE=$namespace
-export QMname="mq"$student"strm"
+export QMInstance=$TARGET_NAMESPACE"-mq"$student"strm"
 
-oc delete queuemanager $QMname -n $TARGET_NAMESPACE
+oc delete queuemanager $QMInstance -n $TARGET_NAMESPACE
 oc delete secret streamqqmgrcert -n $TARGET_NAMESPACE
 oc delete configmap streamqmqsc -n $TARGET_NAMESPACE
-oc delete route mq-traffic-mq-$QMname-ibm-mq-qm -n $TARGET_NAMESPACE
-oc delete pvc data-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
+oc delete route mq-traffic-mq-$QMInstance-ibm-mq-qm -n $TARGET_NAMESPACE
+oc delete pvc data-$QMInstance-ibm-mq-0 -n $TARGET_NAMESPACE
 
 rm streamq.yaml
 rm strm-install.sh

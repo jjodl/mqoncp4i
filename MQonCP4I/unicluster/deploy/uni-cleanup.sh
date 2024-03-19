@@ -81,7 +81,7 @@ oc delete configmap $QMnamed-uniform-cluster-ini-4 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMnamed-ibm-mq-0 -n $TARGET_NAMESPACE
 oc delete pvc $QMnamed-ibm-mq-persisted-data -n $TARGET_NAMESPACE
 oc delete pvc $QMnamed-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
-rm unicluster.yaml
-rm uniaddqmgr.yaml
+##rm unicluster.yaml
+##rm uniaddqmgr.yaml
 rm uni-addqmgr.sh
 rm uni-install.sh
