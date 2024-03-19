@@ -6,12 +6,12 @@
 # This script will create the 4th Qmgr for the UniCluster lab.
 #
 ERRORMSG1="Error invalid arg:  \n\n
-Usage: <script> -i 01 -n melch1 \n
+Usage: <script> -i 01 -n student1 \n
     -i, Student number \n
     -n, Student Namespace"
 
 ERRORMSG2="Missing args:  \n\n
-Usage: <script> -i 01 -n melch1 \n
+Usage: <script> -i 01 -n student1 \n
     -i, Student number \n
     -n, Student Namespace"
 
