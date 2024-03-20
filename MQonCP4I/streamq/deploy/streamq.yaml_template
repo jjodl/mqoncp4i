@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: streamqmqsc
+  name: $TARGET_NAMESPACE-streamqmqsc
   namespace: $TARGET_NAMESPACE
 data:
   disablesecurity.mqsc: |-
