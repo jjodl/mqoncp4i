@@ -31,9 +31,9 @@ export QMInstance=$TARGET_NAMESPACE"-mq"$student"strm"
 
 oc delete queuemanager $QMInstance -n $TARGET_NAMESPACE
 oc delete secret streamqqmgrcert -n $TARGET_NAMESPACE
-oc delete configmap streamqmqsc -n $TARGET_NAMESPACE
+oc delete configmap $QMInstance -n $TARGET_NAMESPACE
 oc delete route $TARGET_NAMEPSPACE-mq-traffic-mq-mq$studentstrm-ibm-mq-qm -n $TARGET_NAMESPACE
-oc delete pvc data-$TARGET_NAMESPACE-mq$studentstrm-ibm-mq-0 -n $TARGET_NAMESPACE
+oc delete pvc data-$QMInstance-ibm-mq-0 -n $TARGET_NAMESPACE
 
-rm streamq.yaml
-rm strm-install.sh
+#rm streamq.yaml
+#rm strm-install.sh

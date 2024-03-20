@@ -55,36 +55,59 @@ export UNICLUS=UNICLUS"$student"
 #
 oc delete secret $QMpre-uniform-cluster-cert -n $TARGET_NAMESPACE
 oc delete queuemanager $TARGET_NAMESPACE"-mq"$student"a" -n $TARGET_NAMESPACE
-oc delete route mq-traffic-mq-$QMnamea-ibm-mq-qm -n $TARGET_NAMESPACE
+oc delete route $TARGET_NAMESPACE"-mq-traffic-mq-$QMnamea-ibm-mq-qm -n $TARGET_NAMESPACE
 oc delete configmap $QMnamea-uniform-cluster-mqsc-1 -n $TARGET_NAMESPACE
 oc delete configmap $QMnamea-uniform-cluster-ini-1 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMnamea-ibm-mq-0 -n $TARGET_NAMESPACE
-oc delete pvc $QMnamea-ibm-mq-persisted-data -n $TARGET_NAMESPACE
-oc delete pvc $QMnamea-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
-oc delete queuemanager $QMnameb -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnamea-ibm-mq-persisted-data -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnamea-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
+
 oc delete queuemanager $TARGET_NAMESPACE"-mq"$student"b" -n $TARGET_NAMESPACE
-oc delete route mq-traffic-mq-$QMnameb-ibm-mq-qm -n $TARGET_NAMESPACE
+oc delete route $TARGET_NAMESPACE"-mq-traffic-mq-$QMnameb-ibm-mq-qm -n $TARGET_NAMESPACE
 oc delete configmap $QMnameb-uniform-cluster-mqsc-2 -n $TARGET_NAMESPACE
 oc delete configmap $QMnameb-uniform-cluster-ini-2 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMnameb-ibm-mq-0 -n $TARGET_NAMESPACE
-oc delete pvc $QMnameb-ibm-mq-persisted-data -n $TARGET_NAMESPACE
-oc delete pvc $QMnameb-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
-oc delete queuemanager $QMnamec -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnameb-ibm-mq-persisted-data -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnameb-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
+
 oc delete queuemanager $TARGET_NAMESPACE"-mq"$student"c" -n $TARGET_NAMESPACE
-oc delete route mq-traffic-mq-$QMnamec-ibm-mq-qm -n $TARGET_NAMESPACE
+oc delete route $TARGET_NAMESPACE"-mq-traffic-mq-$QMnamec-ibm-mq-qm -n $TARGET_NAMESPACE
 oc delete configmap $QMnamec-uniform-cluster-mqsc-3 -n $TARGET_NAMESPACE
 oc delete configmap $QMnamec-uniform-cluster-ini-3 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMnamec-ibm-mq-0 -n $TARGET_NAMESPACE
-oc delete pvc $QMnamec-ibm-mq-persisted-data -n $TARGET_NAMESPACE
-oc delete pvc $QMnamec-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnamec-ibm-mq-persisted-data -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnamec-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
+
+
 oc delete queuemanager $QMnamed -n $TARGET_NAMESPACE
 oc delete route mq-traffic-mq-$QMnamed-ibm-mq-qm -n $TARGET_NAMESPACE
 oc delete configmap $QMnamed-uniform-cluster-mqsc-4 -n $TARGET_NAMESPACE
 oc delete configmap $QMnamed-uniform-cluster-ini-4 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMnamed-ibm-mq-0 -n $TARGET_NAMESPACE
-oc delete pvc $QMnamed-ibm-mq-persisted-data -n $TARGET_NAMESPACE
-oc delete pvc $QMnamed-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnamed-ibm-mq-persisted-data -n $TARGET_NAMESPACE
+oc delete pvc $TARGET_NAMESPACE"-"$QMnamed-ibm-mq-recovery-logs -n $TARGET_NAMESPACE
+
+
 ##rm unicluster.yaml
 ##rm uniaddqmgr.yaml
 rm uni-addqmgr.sh
 rm uni-install.sh
+
+
+oc delete pvc student1-mq01a-ibm-mq-recovery-logs -n student1
+oc delete pvc student1-mq01b-ibm-mq-recovery-logs -n student1
+oc delete pvc student1-mq01c-ibm-mq-recovery-logs -n student1
+oc delete pvc persisted-data-student1-qm-ha-ibm-mq-0 -n student1
+oc delete pvc persisted-data-student1-qm-ha-ibm-mq-1 -n student1
+oc delete pvc persisted-data-student1-qm-ha-ibm-mq-2 -n student1
+oc delete pvc recovery-logs-student1-qm-ha-ibm-mq-0 -n student1
+oc delete pvc recovery-logs-student1-qm-ha-ibm-mq-1 -n student1
+oc delete pvc recovery-logs-student1-qm-ha-ibm-mq-2 -n student1
+
+[student@itzvsi-4d62td6q deploy]$ oc delete pvc recovery-logs-student1-qm-ha-ibm-mq-2 -n student1
+persistentvolumeclaim "recovery-logs-student1-qm-ha-ibm-mq-2" deleted
+[student@itzvsi-4d62td6q deploy]$ oc delete pvc recovery-logs-student1-qm-ha-ibm-mq-1 -n student1
+persistentvolumeclaim "recovery-logs-student1-qm-ha-ibm-mq-1" deleted
+[student@itzvsi-4d62td6q deploy]$ oc delete pvc recovery-logs-student1-qm-ha-ibm-mq-0 -n student1
+persistentvolumeclaim "recovery-logs-student1-qm-ha-ibm-mq-0" deleted
+
