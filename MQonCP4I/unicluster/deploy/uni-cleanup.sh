@@ -93,4 +93,3 @@ oc delete pvc $TARGET_NAMESPACE"-"$QMnamed"-ibm-mq-recovery-logs" -n $TARGET_NAM
 ##rm uniaddqmgr.yaml
 rm uni-addqmgr.sh
 rm uni-install.sh
-==============================================================================
