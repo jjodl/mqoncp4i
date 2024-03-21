@@ -41,6 +41,17 @@ oc delete configmap nativehamqsc -n $TARGET_NAMESPACE
 oc delete pvc data-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMname-ibm-mq-1 -n $TARGET_NAMESPACE
 oc delete pvc data-$QMname-ibm-mq-2 -n $TARGET_NAMESPACE
+
+oc delete pvc "data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-0" -n $TARGET_NAMESPACE
+oc delete pvc "data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-1" -n $TARGET_NAMESPACE
+oc delete pvc "data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-2" -n $TARGET_NAMESPACE
+oc delete pvc "persisted-data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-0" -n $TARGET_NAMESPACE
+oc delete pvc "persisted-data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-1" -n $TARGET_NAMESPACE
+oc delete pvc "persisted-data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-2" -n $TARGET_NAMESPACE
+oc delete pvc "recovery-logs-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-0" -n $TARGET_NAMESPACE
+oc delete pvc "recovery-logs-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-1" -n $TARGET_NAMESPACE
+oc delete pvc "recovery-logs-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-2" -n $TARGET_NAMESPACE
+
 oc delete route $TARGET_NAMESPACE-mq-traffic-mq-$QMname-ibm-mq-qm -n $TARGET_NAMESPACE
 
 ##rm nativeha.yaml
