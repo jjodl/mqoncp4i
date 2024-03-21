@@ -58,7 +58,7 @@ spec:
         memory: "512Mi"
     mqsc:
       - configMap:
-          name: streamqmqsc
+          name: $TARGET_NAMESPACE-streamqmqsc
           items:
             - disablesecurity.mqsc
   template:
