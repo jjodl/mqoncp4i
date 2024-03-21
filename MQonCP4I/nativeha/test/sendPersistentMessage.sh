@@ -8,6 +8,7 @@ export MQCHLLIB="${DIR}"
 export MQCHLTAB="${DIR}/ccdt_generated.json"
 export TARGET_NAMESPACE=cp4i-mq
 export QMpre=mq00
+export QMroute=$TARGET_NAMESPACE-qm-ha
 export QMname=mq00ha
 export CHLCAPS=MQ00HACHL
 export APPQ=APPQ1
