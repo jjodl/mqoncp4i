@@ -12,3 +12,4 @@ export MQSSLKEYR='/home/student/MQonCP4I/streamq/test/key'
 
 echo "Starting amqsghac" $QMname
 /opt/mqm/samp/bin/amqsghac $APPQ $QMname
+
