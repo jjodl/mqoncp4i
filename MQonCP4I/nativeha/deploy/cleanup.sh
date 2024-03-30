@@ -32,25 +32,22 @@ export QMname="mq"$student"ha"
 #mq99 reserved for instructor
 export TARGET_NAMESPACE=$namespace
 export QMname="mq"$student"ha"
-export QMInstance=$TARGET_NAMESPACE"-qm-ha"
+export QMInstance=$TARGET_NAMESPACE-$QMname
 ###oc delete queuemanagers.mq.ibm.com student1-qm-ha -n student1
 
 oc delete queuemanagers.mq.ibm.com $QMInstance -n $TARGET_NAMESPACE
 oc delete secret nativehacert -n $TARGET_NAMESPACE
 oc delete configmap nativehamqsc -n $TARGET_NAMESPACE
-oc delete pvc data-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
-oc delete pvc data-$QMname-ibm-mq-1 -n $TARGET_NAMESPACE
-oc delete pvc data-$QMname-ibm-mq-2 -n $TARGET_NAMESPACE
 
-oc delete pvc "data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-0" -n $TARGET_NAMESPACE
-oc delete pvc "data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-1" -n $TARGET_NAMESPACE
-oc delete pvc "data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-2" -n $TARGET_NAMESPACE
-oc delete pvc "persisted-data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-0" -n $TARGET_NAMESPACE
-oc delete pvc "persisted-data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-1" -n $TARGET_NAMESPACE
-oc delete pvc "persisted-data-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-2" -n $TARGET_NAMESPACE
-oc delete pvc "recovery-logs-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-0" -n $TARGET_NAMESPACE
-oc delete pvc "recovery-logs-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-1" -n $TARGET_NAMESPACE
-oc delete pvc "recovery-logs-"$TARGET_NAMESPACE"-qm-ha-ibm-mq-2" -n $TARGET_NAMESPACE
+oc delete pvc data-$TARGET_NAMESPACE-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
+oc delete pvc data-$TARGET_NAMESPACE-$QMname-ibm-mq-1 -n $TARGET_NAMESPACE
+oc delete pvc data-$TARGET_NAMESPACE-$QMname-ibm-mq-2 -n $TARGET_NAMESPACE
+oc delete pvc persisted-data-$TARGET_NAMESPACE-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
+oc delete pvc persisted-data-$TARGET_NAMESPACE-$QMname-ibm-mq-1 -n $TARGET_NAMESPACE
+oc delete pvc persisted-data-$TARGET_NAMESPACE-$QMname-ibm-mq-2 -n $TARGET_NAMESPACE
+oc delete pvc recovery-logs-$TARGET_NAMESPACE-$QMname-ibm-mq-0 -n $TARGET_NAMESPACE
+oc delete pvc recovery-logs-$TARGET_NAMESPACE-$QMname-ibm-mq-1 -n $TARGET_NAMESPACE
+oc delete pvc recovery-logs-$TARGET_NAMESPACE-$QMname-ibm-mq-2 -n $TARGET_NAMESPACE
 
 oc delete route $TARGET_NAMESPACE-mq-traffic-mq-$QMname-ibm-mq-qm -n $TARGET_NAMESPACE
 
