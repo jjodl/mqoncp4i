@@ -4,18 +4,21 @@
 
 Check the **setup.properties** to make sure you have the correct license and version for MQ 
 
+```
+Usage:
+./MQ_setup.sh -i <student number> -n <student namespace>
+```
 
-This example is using student2 login with namespace of student2
+This example is using student2 with namespace of student2
 ```
 ./MQ_setup.sh -i 2 -n student2
-02
- You have set the Namespace to student2 and the instance number to 02
-Are these correct?  The instance number is zero filled for numbers 1-9. (Y/N)
 ```
+
 You will be asked if the Namespace and instance number are correct.  enter y/n
 
-This will then create all build scripts for the labs.
+This will then create all build scripts for the MQ labs [streamQ, nativeHA, and unicluster].
 
+The following is the output from the command above:
 ```
 Are these correct?  The instance number is zero filled for numbers 1-9. (Y/N)y
 ...
