@@ -13,6 +13,7 @@ export CHANNEL=$CHANNEL
 export SC=$SC
 #export SC=ibmc-file-gold-gid
 export VERSION=$VERSION
+export LICENSE=$LICENSE
 
 ( echo "cat <<EOF" ; cat nativeha.yaml_template ; echo EOF ) | sh > nativeha.yaml
 
