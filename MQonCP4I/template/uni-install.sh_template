@@ -27,6 +27,7 @@ export UNICLUS=$UNICLUS
 export SC=$SC
 #export SC=ibmc-file-gold-gid
 export VERSION=$VERSION
+export LICENSE=$LICENSE
 
 ( echo "cat <<EOF" ; cat unicluster.yaml_template ; echo EOF ) | sh > unicluster.yaml
 

@@ -23,6 +23,7 @@ export UNICLUS=$UNICLUS
 export SC=$SC
 #export SC=ibmc-file-gold-gid
 export VERSION=$VERSION
+export LICENSE=$LICENSE
 
 ( echo "cat <<EOF" ; cat uniaddqmgr.yaml_template ; echo EOF ) | sh > uniaddqmgr.yaml
 
