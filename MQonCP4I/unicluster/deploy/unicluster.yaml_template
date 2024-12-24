@@ -160,7 +160,7 @@ spec:
   version: $VERSION
   license:
     accept: true
-    license: L-VTPK-22YZPK
+    license: $LICENSE
     use: "NonProduction"
   pki:
     keys:
@@ -263,7 +263,7 @@ spec:
   version: $VERSION
   license:
     accept: true
-    license: L-VTPK-22YZPK
+    license: $LICENSE
     use: "NonProduction"
   pki:
     keys:
