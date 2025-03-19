@@ -1,7 +1,7 @@
 # mqoncp4i
 
 ## Working directory for MQ on CP4I PoT
-
+find . -type f -iname "*.sh" -exec chmod +x {} \;
 Check the **setup.properties** to make sure you have the correct license and version for MQ 
 
 ```
