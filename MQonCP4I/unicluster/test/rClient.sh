@@ -1,13 +1,10 @@
 #!/bin/bash
 
-export QMpre=mq00
-export QMname=mq00a
-
-export MQCHLLIB='/home/student/MQonCP4I/unicluster/test'
-export MQCHLTAB='/home/student/MQonCP4I/unicluster/test/ccdt5.json'
+export MQCHLLIB='/home/ibmuser/MQonCP4I/unicluster/test'
+export MQCHLTAB='/home/ibmuser/MQonCP4I/unicluster/test/ccdt.json'
 export MQAPPLNAME='MY.GETTER.APP'
-export MQCCDTURL='/home/student/MQonCP4I/unicluster/test/ccdt5.json'
-export MQSSLKEYR='/home/student/MQonCP4I/unicluster/test/key'
+export MQCCDTURL='/home/ibmuser/MQonCP4I/unicluster/test/ccdt.json'
+export MQSSLKEYR='/home/ibmuser/MQonCP4I/unicluster/test/key'
 
 
 CCDT_NAME=${2:-"*ANY_QM"}
