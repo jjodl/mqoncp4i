@@ -59,6 +59,12 @@ echo " You have set the Namespace to $NS and the instance number to $STUDENT_NUM
 export IBM_MQ_LICENSE=$IBM_MQ_LICENSE
 export IBM_MQ_VERSION=$IBM_MQ_VERSION
 export TARGET_NAMESPACE=$NS
+if [ $NS == "cp4i-mq" ]
+  then
+   export QMGR_NS=""
+   else 
+   export QMGR_NS="-"$TARGET_NAMESPACE
+fi
 export QMpre="mq"$STUDENT_NUM
 export VERSION=$IBM_MQ_VERSION
 export LICENSE=$IBM_MQ_LICENSE
@@ -70,7 +76,7 @@ export SC=ocs-storagecluster-ceph-rbd
 echo "..."
 echo "[INFO] Build the ${bold}deployment yamls and test scripts for streamQ labs. ${normal} "
 
-export QMInstance=$TARGET_NAMESPACE"-"$QMpre"strm"
+export QMInstance=$QMGR_NS$QMpre"strm"
 export QMname="mq"$STUDENT_NUM"strm"
 export ROUTE="mq"$STUDENT_NUM"strmchl.chl.mq.ibm.com"
 export CHLCAPS="MQ"$STUDENT_NUM"STRMCHL"
@@ -89,7 +95,7 @@ echo "...."
 echo "[INFO] Build the ${bold}deployment yamls and test scripts for navtiveHA labs. ${normal} "
 
 export QMname="mq"$STUDENT_NUM"ha"
-export QMInstance=$TARGET_NAMESPACE"-"$QMname
+export QMInstance=$$QMGR_NS$QMname
 export CHANNEL="mq"$STUDENT_NUM"hachl"
 export CHLCAPS="MQ"$STUDENT_NUM"HACHL"
 export HA_DIR="nativeha/deploy/"
@@ -100,26 +106,43 @@ chmod +x $HA_DIR"ha-install.sh"
 
 echo "[INFO] nativeHA build yaml script is complete."
 #
+# Build the nativeHA CRR build yaml script.
+#
+echo "...."
+echo "[INFO] Build the ${bold}deployment yamls and test scripts for navtiveHA CRR labs. ${normal} "
+
+export QMname="mq"$STUDENT_NUM"ha"
+export QMInstance=$QMGR_NS$QMname
+export CHANNEL="mq"$STUDENT_NUM"hachl"
+export CHLCAPS="MQ"$STUDENT_NUM"HACHL"
+export HA_DIR="nativeha/deploy/"
+
+( echo 'cat <<EOF' ; cat template/nativeha-crr-install.sh_template ; echo EOF ) | sh > $HA_DIR"ha-crr-install.sh"
+
+chmod +x $HA_DIR"ha-crr-install.sh"
+
+echo "[INFO] nativeHA CRR build yaml script is complete."
+#
 # Build the UniCluster build yaml scripts.
 #
 echo "...."
 echo "[INFO] Build the ${bold}deployment yamls and test scripts for unicluster labs. ${normal} "
 
-export QMInstancea=$TARGET_NAMESPACE"-mq"$STUDENT_NUM"a"
+export QMInstancea=$QMGR_NS"mq"$STUDENT_NUM"a"
 export QMnamea="mq"$STUDENT_NUM"a"
 export CONNAMEa=$NS"-mq"$STUDENT_NUM"a-ibm-mq"
 export SERVICEa="mq"$STUDENT_NUM"a-ibm-mq"
 export CHANNELa="mq"$STUDENT_NUM"chla"
 export TOCLUSa="TO_UNICLUS_mq"$STUDENT_NUM"a"
 
-export QMInstanceb=$TARGET_NAMESPACE"-mq"$STUDENT_NUM"b"
+export QMInstanceb=$QMGR_NS"mq"$STUDENT_NUM"b"
 export QMnameb="mq"$STUDENT_NUM"b"
 export CONNAMEb=$NS"-mq"$STUDENT_NUM"b-ibm-mq"
 export SERVICEb="mq"$STUDENT_NUM"b-ibm-mq"
 export CHANNELb="mq"$STUDENT_NUM"chlb"
 export TOCLUSb="TO_UNICLUS_mq"$STUDENT_NUM"b"
 
-export QMInstancec=$TARGET_NAMESPACE"-mq"$STUDENT_NUM"c"
+export QMInstancec=$QMGR_NS"mq"$STUDENT_NUM"c"
 export QMnamec="mq"$STUDENT_NUM"c"
 export CONNAMEc=$NS"-mq"$STUDENT_NUM"c-ibm-mq"
 export SERVICEc="mq"$STUDENT_NUM"c-ibm-mq"
