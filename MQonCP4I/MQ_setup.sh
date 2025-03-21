@@ -13,31 +13,40 @@ yellow=$(tput setaf 3)
 bold=$(tput bold)
 normal=$(tput sgr0)
 #
-# This script will create the requied build scripts for all MQ labs 
+# This script will create the required build scripts for all MQ labs 
 #
 ERRORMSG1="Error invalid arg:  \n\n
-Usage: $0 -i 01 -n student1 \n
+Usage: $0 -i 01 -n student1 -p Primary host -r Recovery host\n
     -i, Student number \n
-    -n, Student Namespace"
+    -n, Student Namespace \n
+    -p, Host name for primary cluster \n
+    -r, Host name for recovery cluster \n"
 
 ERRORMSG2="Missing args:  \n\n
-Usage: $0 -i 01 -n student1 \n
+Usage: $0 -i 01 -n student1 -p Primary host -r Recovery host\n
     -i, Student number \n
-    -n, Student Namespace"
+    -n, Student Namespace \n
+    -p, Host name for primary cluster \n
+    -r, Host name for recovery cluster \n"
 
-   while getopts ':i:n:' flag;
+   while getopts ':i:n:p:r:' flag;
      do
        case "${flag}" in
          i) student=${OPTARG}
                 printf -v STUDENT_NUM "%02d" $student; 
            	echo $STUDENT_NUM
 	      ;;
-         n) NS=${OPTARG};;
+         n) NS=${OPTARG}
+        ;;
+         p) PRI_HOST=${OPTARG}
+        ;;
+         r) RECV_HOST=${OPTARG}
+         ;;
          *) echo -e ${ERRORMSG1}
 		exit 1;;
        esac
    done
-if [ $OPTIND -ne 5 ]; then
+if [ $OPTIND -ne 9 ]; then
    echo -e ${ERRORMSG2} 
    exit 1
 fi
@@ -54,6 +63,28 @@ echo " You have set the Namespace to $NS and the instance number to $STUDENT_NUM
    esac
  done
 #
+# make sure you pass valid args for the hosts names 
+#
+echo ""
+echo " ${bold}Host example format: https://api.67c202f1d1ee7bb0b5bead95.am1.techzone.ibm.com:6443${textreset}"
+echo ""
+echo " You have set the Primary Host for nativeHA to ${bold}$PRI_HOST${textreset}"
+echo " and "
+echo " The Recovery Host for CCR to ${bold}$RECV_HOST${textreset}"	 
+echo ""
+ while true; do
+   read -p "${bold}Are these correct?  (Y/N)${textreset}" yn
+   case $yn in
+       [Yy]* ) break;;
+       [Nn]* ) exit 1;;
+       * ) echo "Please answer y or n.";;
+   esac
+ done
+
+##oc login https://api.67c202f1d1ee7bb0b5bead95.am1.techzone.ibm.com:6443 -u student2 -p welcometoFSMpot
+###oc project $TARGET_NAMESPACE
+
+#
 # Set all common variables
 #
 export IBM_MQ_LICENSE=$IBM_MQ_LICENSE
@@ -68,6 +99,8 @@ fi
 export QMpre="mq"$STUDENT_NUM
 export VERSION=$IBM_MQ_VERSION
 export LICENSE=$IBM_MQ_LICENSE
+export MQ_NATIVEHA_HOST=$PRI_HOST
+export MQ_RECOVERY_HOST=$RECV_HOST
 export SC=ocs-storagecluster-ceph-rbd
 #export SC=ibmc-file-gold-gid
 #
@@ -117,7 +150,7 @@ export CHANNEL="mq"$STUDENT_NUM"hachl"
 export CHLCAPS="MQ"$STUDENT_NUM"HACHL"
 export HA_DIR="nativeha/deploy/"
 
-( echo 'cat <<EOF' ; cat template/nativeha-crr-install.sh_template ; echo EOF ) | sh > $HA_DIR"ha-crr-install.sh"
+( echo 'cat <<EOF' ; cat template/nativeha-crr-install.sh_template ; echo EOF ) | sh > $HA_DIR"2-ha-crr-install.sh"
 
 chmod +x $HA_DIR"ha-crr-install.sh"
 

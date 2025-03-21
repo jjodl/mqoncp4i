@@ -61,7 +61,7 @@ spec:
         enabled: false
         protocol: http
   queueManager:
-    name: ${QMGR_NAME_LOWERCASE}
+    name: ${QMname}
     mqsc:
       - configMap:
           name: ${QMname}-mqsc
