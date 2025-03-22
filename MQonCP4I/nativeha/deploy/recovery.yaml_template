@@ -4,7 +4,7 @@ metadata:
   name: ${QMname}-mqsc
   namespace: $TARGET_NAMESPACE
 data:
-  ${QMGR_NAME_LOWERCASE}-mqsc.mqsc: |-
+  ${QMname}-mqsc.mqsc: |-
     define ql(APPQ) DEFPSIST(YES)
     define ql(APPQ1) DEFPSIST(YES)
     DEFINE CHANNEL($CHLCAPS) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER')

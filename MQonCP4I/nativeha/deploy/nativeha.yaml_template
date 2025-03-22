@@ -10,7 +10,7 @@ data:
     DEFINE CHANNEL($CHLCAPS) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER')
     set chlauth($CHLCAPS) TYPE(BLOCKUSER) USERLIST(NOBODY)
     REFRESH SECURITY TYPE(CONNAUTH)
-  ${QMGR_NAME_LOWERCASE}-tls.ini: |
+  ${QMname}-tls.ini: |
     Service:
         Name=AuthorizationService
         EntryPoints=14

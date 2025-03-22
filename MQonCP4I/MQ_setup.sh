@@ -150,9 +150,9 @@ export CHANNEL="mq"$STUDENT_NUM"hachl"
 export CHLCAPS="MQ"$STUDENT_NUM"HACHL"
 export HA_DIR="nativeha/deploy/"
 
-( echo 'cat <<EOF' ; cat template/nativeha-crr-install.sh_template ; echo EOF ) | sh > $HA_DIR"2-ha-crr-install.sh"
+( echo 'cat <<EOF' ; cat template/recovery-install.sh_template ; echo EOF ) | sh > $HA_DIR"recovery-install.sh"
 
-chmod +x $HA_DIR"ha-crr-install.sh"
+chmod +x $HA_DIR"recovery-install.sh"
 
 echo "[INFO] nativeHA CRR build yaml script is complete."
 #

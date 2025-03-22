@@ -1,5 +1,31 @@
 #! /bin/bash
-
+#
+# make sure you are logged onto the correct OpenShift Cluster
+#
+oc cluster-info > /dev/null 2>&1
+if [ $? -eq 0 ];
+  then
+    OCP_CLUSTER=$(oc project | cut -d ' ' -f 6)
+     echo "${bold}Your current Cluster:${textreset}"
+     echo "$OCP_CLUSTER"
+  else 
+   {	
+    echo "${red}[ERROR]${textreset}You are NOT login to a OCP cluster"
+    echo "Login to your OCP cluster and rerun the script"
+    exit 1
+   }
+ fi
+#
+# Check if this is the OCP cluster you are setting up
+#	 
+ while true; do
+   read -p "${bold}Is this the cluster you are setting up? (Y/N)${textreset}" yn
+   case $yn in
+       [Yy]* ) break;;
+       [Nn]* ) exit 1;;
+       * ) echo "Please answer y or n.";;
+   esac
+ done
 #Use storage class ibmc-file-gold-gid when running on ROKS clusters
 #Use storage class managed-nfs-storage when running on CoC PoT clusters
 #mq00 reserved for instructor
