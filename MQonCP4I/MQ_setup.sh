@@ -15,19 +15,15 @@ normal=$(tput sgr0)
 #
 # This script will create the required build scripts for all MQ labs 
 #
-ERRORMSG1="Error invalid arg:  \n\n
-Usage: $0 -i 01 -n student1 -p Primary host -r Recovery host\n
+ERRORMSG1="Error invalid arg:  \n
+Usage: $0 -i 01 -n student1 \n
     -i, Student number \n
     -n, Student Namespace \n
-    -p, Host name for primary cluster \n
-    -r, Host name for recovery cluster \n"
 
-ERRORMSG2="Missing args:  \n\n
-Usage: $0 -i 01 -n student1 -p Primary host -r Recovery host\n
+ERRORMSG2="Missing args:  \n
+Usage: $0 -i 01 -n student1 \n
     -i, Student number \n
     -n, Student Namespace \n
-    -p, Host name for primary cluster \n
-    -r, Host name for recovery cluster \n"
 
    while getopts ':i:n:p:r:' flag;
      do
@@ -38,15 +34,11 @@ Usage: $0 -i 01 -n student1 -p Primary host -r Recovery host\n
 	      ;;
          n) NS=${OPTARG}
         ;;
-         p) PRI_HOST=${OPTARG}
-        ;;
-         r) RECV_HOST=${OPTARG}
-         ;;
          *) echo -e ${ERRORMSG1}
 		exit 1;;
        esac
    done
-if [ $OPTIND -ne 9 ]; then
+if [ $OPTIND -ne 5 ]; then
    echo -e ${ERRORMSG2} 
    exit 1
 fi
@@ -62,28 +54,6 @@ echo " You have set the Namespace to $NS and the instance number to $STUDENT_NUM
        * ) echo "Please answer y or n.";;
    esac
  done
-#
-# make sure you pass valid args for the hosts names 
-#
-echo ""
-echo " ${bold}Host example format: https://api.67c202f1d1ee7bb0b5bead95.am1.techzone.ibm.com:6443${textreset}"
-echo ""
-echo " You have set the Primary Host for nativeHA to ${bold}$PRI_HOST${textreset}"
-echo " and "
-echo " The Recovery Host for CCR to ${bold}$RECV_HOST${textreset}"	 
-echo ""
- while true; do
-   read -p "${bold}Are these correct?  (Y/N)${textreset}" yn
-   case $yn in
-       [Yy]* ) break;;
-       [Nn]* ) exit 1;;
-       * ) echo "Please answer y or n.";;
-   esac
- done
-
-##oc login https://api.67c202f1d1ee7bb0b5bead95.am1.techzone.ibm.com:6443 -u student2 -p welcometoFSMpot
-###oc project $TARGET_NAMESPACE
-
 #
 # Set all common variables
 #
