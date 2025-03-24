@@ -1,32 +1,4 @@
 #! /bin/bash
-#
-# make sure you are logged onto the correct OpenShift Cluster
-#
-oc cluster-info > /dev/null 2>&1
-if [ $? -eq 0 ];
-  then
-    OCP_CLUSTER=$(oc project | cut -d ' ' -f 6)
-     echo "${bold}Your current Cluster:${textreset}"
-     echo "$OCP_CLUSTER"
-  else 
-   {	
-    echo "${red}[ERROR]${textreset}You are NOT login to a OCP cluster"
-    echo "Login to your OCP cluster and rerun the script"
-    exit 1
-   }
- fi
-#
-# Check if this is the OCP cluster you are setting up
-#	 
- while true; do
-   read -p "${bold}Is this the cluster you are setting up? (Y/N)${textreset}" yn
-   case $yn in
-       [Yy]* ) break;;
-       [Nn]* ) exit 1;;
-       * ) echo "Please answer y or n.";;
-   esac
- done
-
 #Use storage class ibmc-file-gold-gid when running on ROKS clusters
 #Use storage class managed-nfs-storage when running on CoC PoT clusters
 #mq00 reserved for instructor
@@ -42,11 +14,17 @@ export SC=$SC
 export VERSION=$VERSION
 export LICENSE=$LICENSE
 
-export QM_KEY=$(cat ./${QMname}.key | base64 | tr -d '\n')
-export QM_CERT=$(cat ./${QMname}.crt | base64 | tr -d '\n')
-export CA_CERT=$(cat ./ca.crt | base64 | tr -d '\n')
+export QM_KEY=$(cat mtls/${QMname}.key | base64 | tr -d '\n')
+export QM_CERT=$(cat mtls/${QMname}.crt | base64 | tr -d '\n')
+export CA_CERT=$(cat mtls/ca.crt | base64 | tr -d '\n')
 
 ( echo "cat <<EOF" ; cat recovery.yaml_template ; echo EOF ) | sh > recovery.yaml
 
 oc apply -f recovery.yaml -n $TARGET_NAMESPACE
+
+# create kdb file
+rm ../test/key.*
+runmqakm -keydb -create -db ../test/key.kdb -type cms -pw passw0rd -stash
+runmqakm -cert -add -db ../test/key.kdb -pw passw0rd -label ca -file ../../mtls/ca.crt
+runmqakm -cert -add -db ../test/key.kdb -pw passw0rd -label nativeha -file ../../mtls/nativeha.crt
 
