@@ -18,12 +18,12 @@ normal=$(tput sgr0)
 ERRORMSG1="Error invalid arg:  \n
 Usage: $0 -i 01 -n student1 \n
     -i, Student number \n
-    -n, Student Namespace \n
+    -n, Student Namespace \n"
 
 ERRORMSG2="Missing args:  \n
 Usage: $0 -i 01 -n student1 \n
     -i, Student number \n
-    -n, Student Namespace \n
+    -n, Student Namespace \n"
 
    while getopts ':i:n:p:r:' flag;
      do
@@ -66,6 +66,8 @@ if [ $NS == "cp4i-mq" ]
    else 
    export QMGR_NS="-"$TARGET_NAMESPACE
 fi
+echo "QMGR_NS = " $QMGR_NS
+exit
 export QMpre="mq"$STUDENT_NUM
 export VERSION=$IBM_MQ_VERSION
 export LICENSE=$IBM_MQ_LICENSE
@@ -98,7 +100,7 @@ echo "...."
 echo "[INFO] Build the ${bold}deployment yamls and test scripts for navtiveHA labs. ${normal} "
 
 export QMname="mq"$STUDENT_NUM"ha"
-export QMInstance=$$QMGR_NS$QMname
+export QMInstance=$QMGR_NS$QMname
 export CHANNEL="mq"$STUDENT_NUM"hachl"
 export CHLCAPS="MQ"$STUDENT_NUM"HACHL"
 export HA_DIR="nativeha/deploy/"
