@@ -14,8 +14,8 @@ export SC=$SC
 export VERSION=$VERSION
 export LICENSE=$LICENSE
 
-echo "export QM_KEY=$(cat mtls/${QMname}.key | base64 | tr -d '\n')"
-echo "export QM_CERT=$(cat mtls/${QMname}.crt | base64 | tr -d '\n')"
+echo "export QM_KEY=$(cat mtls/nativeha.key | base64 | tr -d '\n')"
+echo "export QM_CERT=$(cat mtls/nativeha.crt | base64 | tr -d '\n')"
 echo "export CA_CERT=$(cat mtls/ca.crt | base64 | tr -d '\n')"
 
 ( echo "cat <<EOF" ; cat nativeha.yaml_template ; echo EOF ) | sh > nativeha.yaml
