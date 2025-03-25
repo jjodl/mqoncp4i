@@ -111,14 +111,6 @@ chmod +x $HA_DIR"ha-install.sh"
 
 echo "[INFO] nativeHA build yaml script is complete."
 #
-# Build CCR enable script
-#
-( echo 'cat <<EOF' ; cat template/nativeha-enable-crr.sh_template ; echo EOF ) | sh > $HA_DIR"ha-enable-ccr-install.sh"
-
-chmod +x $HA_DIR"ha-enable-ccr-install.sh"
-
-echo "[INFO] nativeHA CCR enable build yaml script is complete."
-#
 # Build the nativeHA CRR build yaml script.
 #
 echo "...."
@@ -135,14 +127,6 @@ export HA_DIR="nativeha/deploy/"
 chmod +x $HA_DIR"recovery-install.sh"
 
 echo "[INFO] nativeHA CRR build yaml script is complete."
-#
-# Build CCR enable script
-#
-( echo 'cat <<EOF' ; cat template/recovery-enable-crr.sh_template ; echo EOF ) | sh > $HA_DIR"recovery-enable-ccr-install.sh"
-
-chmod +x $HA_DIR"recovery-enable-ccr-install.sh"
-
-echo "[INFO] Recovery CCR enable build yaml script is complete."
 #
 # Build the UniCluster build yaml scripts.
 #

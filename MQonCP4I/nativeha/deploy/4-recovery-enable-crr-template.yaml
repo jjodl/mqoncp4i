@@ -10,4 +10,4 @@ spec:
               - secret:
                   items:
                     - tls.crt
-                  secretName: $QMname-qm-tls
+                  secretName: $QMGR_NAME-qm-tls
