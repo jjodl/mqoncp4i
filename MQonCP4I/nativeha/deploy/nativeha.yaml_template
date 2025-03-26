@@ -19,7 +19,7 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: ${QMname}-qm-tls
+  name: nativeha-qm-tls
   namespace: $TARGET_NAMESPACE
 data:
   tls.crt: $QM_CERT
@@ -42,7 +42,7 @@ spec:
     keys:
     - name: default
       secret:
-        secretName: ${QMname}-qm-tls
+        secretName: nativeha-qm-tls
         items:
           - tls.key
           - tls.crt

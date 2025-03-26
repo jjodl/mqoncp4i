@@ -67,7 +67,6 @@ if [ $NS == "cp4i-mq" ]
    export QMGR_NS=$TARGET_NAMESPACE"-"
 fi
 echo "QMGR_NS = " $QMGR_NS
-exit
 export QMpre="mq"$STUDENT_NUM
 export VERSION=$IBM_MQ_VERSION
 export LICENSE=$IBM_MQ_LICENSE
