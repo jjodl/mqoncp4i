@@ -2,7 +2,7 @@ spec:
   queueManager:
     availability:
       tls:
-        secretName: ${QMGR_NAME}-qm-tls
+        secretName: nativeha-qm-tls
       nativeHAGroups:
         local:
           name: live_group

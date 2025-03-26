@@ -17,13 +17,13 @@ if [[ -z "${TARGET_NAMESPACE// /}" ]]; then
 fi
 
 # Get Recovery nhacrr route & host
-oc login https://api.67c202f1d1ee7bb0b5bead95.am1.techzone.ibm.com:6443 -u student2 -p welcometoFSMpot
+oc login $OCP_CLUSTER2 -u integration-admin -p IntegrationWorkshop2025
 
 export HOST=$(oc get route $TARGET_NAMESPACE-$QMGR_NAME-ibm-mq-nhacrr -o jsonpath='{.spec.host}')
 
 ( echo "cat <<EOF" ; cat 3-live-enable-crr-template.yaml ; echo EOF ) | sh > x-3-live-enable-crr.yaml
 
 # Logon to the active cluster
-oc login https://api.67c20883d1ee7bb0b5beada0.am1.techzone.ibm.com:6443 -u student2 -p welcometoFSMpot
+oc login $OCP_CLUSTER1 -u integration-admin -p IntegrationWorkshop2025
 
-oc patch QueueManager $TARGET_NAMESPACE-$QMGR_NAME --type merge --patch "$(cat x-3-live-enable-crr.yaml)"
+oc patch QueueManager $TARGET_NAMESPACE-$QMGR_NAME --type merge --patch "$(cat nativeha-enable-crr.yaml)"

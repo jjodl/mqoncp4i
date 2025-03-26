@@ -119,7 +119,7 @@ export QMname="mq"$STUDENT_NUM"ha"
 export QMInstance=$QMGR_NS$QMname
 export CHANNEL="mq"$STUDENT_NUM"hachl"
 export CHLCAPS="MQ"$STUDENT_NUM"HACHL"
-export HA_DIR="nativeha/deploy/"
+export HA_DIR="nativeha-crr/deploy/"
 
 ( echo 'cat <<EOF' ; cat template/recovery-install.sh_template ; echo EOF ) | sh > $HA_DIR"recovery-install.sh"
 

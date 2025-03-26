@@ -10,4 +10,4 @@ spec:
               - secret:
                   items:
                     - tls.crt
-                  secretName: $QMGR_NAME-qm-tls
+                  secretName: nativeha-qm-tls
